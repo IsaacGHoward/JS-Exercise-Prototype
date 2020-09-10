@@ -97,18 +97,22 @@ Car.prototype.drive = function(distance){
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name,age,favoriteToy);
+  this.favoriteToy = favoriteToy;
 }
-
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function(){
+  return("Playing with " + this.favoriteToy);
+}
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. By default / in global scope, 'this' refers to the window itself / console.
+  2. The object that calls a function is what 'this' binds to in a function. (dot before function)
+  3. In a constructor function, 'this' refers to the object that is constructed with that function. 
+  4. 'this' can be overrode with functions like .call and .apply. Like I did in the Baby constructor code.
 */
 
 
